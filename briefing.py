@@ -71,13 +71,13 @@ def fetch_briefing(today: str) -> dict:
     for _ in range(10):
         response = client.messages.create(
             model="claude-sonnet-4-6",
-            max_tokens=4000,
+            max_tokens=8000,
             system=SYSTEM_PROMPT,
             tools=[{"type": "web_search_20250305", "name": "web_search"}],
             messages=messages,
         )
 
-        if response.stop_reason == "end_turn":
+        if response.stop_reason in ("end_turn", "max_tokens"):
             text_parts = [block.text for block in response.content if block.type == "text"]
             raw = "\n".join(text_parts).strip()
             raw = re.sub(r"^```(?:json)?\s*", "", raw)
