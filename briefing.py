@@ -74,7 +74,7 @@ def fetch_briefing(today: str) -> dict:
             try:
                 response = client.messages.create(
                     model="claude-sonnet-4-6",
-                    max_tokens=16000,
+                    max_tokens=8000,
                     system=SYSTEM_PROMPT,
                     tools=[{"type": "web_search_20250305", "name": "web_search"}],
                     messages=messages,
@@ -83,7 +83,7 @@ def fetch_briefing(today: str) -> dict:
             except anthropic.RateLimitError:
                 if attempt == 4:
                     raise
-                wait = 2 ** (attempt + 1)
+                wait = min(30 * (2 ** attempt), 120)  # 30, 60, 120, 120 s
                 print(f"Rate limited. Waiting {wait}s...")
                 time.sleep(wait)
 
