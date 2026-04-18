@@ -66,19 +66,37 @@ def fetch_briefing(today: str) -> dict:
         "quality stories rather than padding with fluff."
     )
 
-    response = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=4000,
-        system=SYSTEM_PROMPT,
-        tools=[{"type": "web_search_20250305", "name": "web_search"}],
-        messages=[{"role": "user", "content": user_message}],
-    )
+    messages = [{"role": "user", "content": user_message}]
 
-    text_parts = [block.text for block in response.content if block.type == "text"]
-    raw = "\n".join(text_parts).strip()
-    raw = re.sub(r"^```(?:json)?\s*", "", raw)
-    raw = re.sub(r"\s*```$", "", raw)
-    return json.loads(raw)
+    for _ in range(10):
+        response = client.messages.create(
+            model="claude-sonnet-4-6",
+            max_tokens=4000,
+            system=SYSTEM_PROMPT,
+            tools=[{"type": "web_search_20250305", "name": "web_search"}],
+            messages=messages,
+        )
+
+        if response.stop_reason == "end_turn":
+            text_parts = [block.text for block in response.content if block.type == "text"]
+            raw = "\n".join(text_parts).strip()
+            raw = re.sub(r"^```(?:json)?\s*", "", raw)
+            raw = re.sub(r"\s*```$", "", raw)
+            return json.loads(raw)
+
+        if response.stop_reason == "tool_use":
+            messages.append({"role": "assistant", "content": response.content})
+            tool_results = [
+                {"type": "tool_result", "tool_use_id": block.id, "content": ""}
+                for block in response.content
+                if block.type == "tool_use"
+            ]
+            messages.append({"role": "user", "content": tool_results})
+            continue
+
+        raise RuntimeError(f"Unexpected stop_reason: {response.stop_reason}")
+
+    raise RuntimeError("Web search loop exceeded max iterations")
 
 
 def build_html(data: dict, today: str) -> str:
