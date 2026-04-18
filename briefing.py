@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import time
 from datetime import date
 from dotenv import load_dotenv
 import anthropic
@@ -69,13 +70,22 @@ def fetch_briefing(today: str) -> dict:
     messages = [{"role": "user", "content": user_message}]
 
     for _ in range(10):
-        response = client.messages.create(
-            model="claude-sonnet-4-6",
-            max_tokens=8000,
-            system=SYSTEM_PROMPT,
-            tools=[{"type": "web_search_20250305", "name": "web_search"}],
-            messages=messages,
-        )
+        for attempt in range(5):
+            try:
+                response = client.messages.create(
+                    model="claude-sonnet-4-6",
+                    max_tokens=8000,
+                    system=SYSTEM_PROMPT,
+                    tools=[{"type": "web_search_20250305", "name": "web_search"}],
+                    messages=messages,
+                )
+                break
+            except anthropic.RateLimitError:
+                if attempt == 4:
+                    raise
+                wait = 2 ** (attempt + 1)
+                print(f"Rate limited. Waiting {wait}s...")
+                time.sleep(wait)
 
         if response.stop_reason in ("end_turn", "max_tokens"):
             text_parts = [block.text for block in response.content if block.type == "text"]
