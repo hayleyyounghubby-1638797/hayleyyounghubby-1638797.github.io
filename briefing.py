@@ -100,7 +100,12 @@ def fetch_briefing(today: str) -> dict:
                 )
             raw = "\n".join(text_parts).strip()
             raw = re.sub(r"^```(?:json)?\s*", "", raw)
-            raw = re.sub(r"\s*```$", "", raw)
+            raw = re.sub(r"\s*```\s*$", "", raw)
+            raw = raw.strip()
+            # Extract JSON object in case there's preamble or trailing text
+            start, end = raw.find("{"), raw.rfind("}")
+            if start != -1 and end != -1:
+                raw = raw[start:end + 1]
             return json.loads(raw)
 
         if response.stop_reason == "tool_use":
