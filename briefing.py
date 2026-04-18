@@ -69,12 +69,12 @@ def fetch_briefing(today: str) -> dict:
 
     messages = [{"role": "user", "content": user_message}]
 
-    for _ in range(10):
+    for iteration in range(10):
         for attempt in range(5):
             try:
                 response = client.messages.create(
                     model="claude-sonnet-4-6",
-                    max_tokens=8000,
+                    max_tokens=16000,
                     system=SYSTEM_PROMPT,
                     tools=[{"type": "web_search_20250305", "name": "web_search"}],
                     messages=messages,
@@ -87,8 +87,17 @@ def fetch_briefing(today: str) -> dict:
                 print(f"Rate limited. Waiting {wait}s...")
                 time.sleep(wait)
 
+        block_types = [block.type for block in response.content]
+        print(f"Iteration {iteration}: stop_reason={response.stop_reason}, blocks={block_types}")
+
         if response.stop_reason in ("end_turn", "max_tokens"):
             text_parts = [block.text for block in response.content if block.type == "text"]
+            print(f"Text blocks: {len(text_parts)}, total chars: {sum(len(t) for t in text_parts)}")
+            if not text_parts:
+                raise RuntimeError(
+                    f"stop_reason={response.stop_reason} but no text blocks. "
+                    f"Block types present: {block_types}"
+                )
             raw = "\n".join(text_parts).strip()
             raw = re.sub(r"^```(?:json)?\s*", "", raw)
             raw = re.sub(r"\s*```$", "", raw)
