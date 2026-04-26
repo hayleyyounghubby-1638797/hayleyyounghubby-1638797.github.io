@@ -14,6 +14,8 @@ RESEND_API_KEY = os.environ["RESEND_API_KEY"]
 TO_EMAIL = os.environ["TO_EMAIL"]
 FROM_EMAIL = os.environ["FROM_EMAIL"]
 
+STORY_LOG_PATH = "story_log.json"
+
 SYSTEM_PROMPT = """You are "The Algorithm," a sharp, dramatically entertaining AI news correspondent writing a morning briefing for a Gen AI product lead at American Express who focuses on the FRONTEND of Gen AI products — the customer-facing UX, design, and product experience. They work in fintech but also love hearing about AI in dining, travel, events, and consumer apps like Spotify.
 
 Your briefing style: reality TV gossip meets Wall Street analyst. Think "Real Housewives meets Bloomberg." You narrate corporate AI developments like they're dramatic plot twists — with receipts. You're witty, a little catty, occasionally gleeful — but NEVER hyped or dishonest. No "this changes everything." No breathless clickbait. Be real. Be fair. Be entertaining.
@@ -58,16 +60,46 @@ CATEGORY_COLORS = {
 }
 
 
-def fetch_briefing(today: str) -> dict:
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-    user_message = (
+def load_recent_topics() -> list[dict]:
+    if not os.path.exists(STORY_LOG_PATH):
+        return []
+    try:
+        with open(STORY_LOG_PATH) as f:
+            entries = json.load(f)
+        return entries[-7:]
+    except Exception:
+        return []
+
+
+def save_story_log(today: str, stories: list[dict]) -> None:
+    entries = load_recent_topics()
+    entries.append({"date": today, "headlines": [s["headline"] for s in stories]})
+    entries = entries[-7:]
+    with open(STORY_LOG_PATH, "w") as f:
+        json.dump(entries, f, indent=2)
+
+
+def build_user_message(today: str, recent: list[dict]) -> str:
+    msg = (
         f"Today is {today}. Search the web for the most notable AI news from the last "
         "24-48 hours and generate my morning briefing. Focus on stories that dropped since "
         "yesterday morning. If it's been a quiet news day, be honest and go deeper on 3-4 "
         "quality stories rather than padding with fluff."
     )
+    if recent:
+        covered = "\n".join(
+            f"- {e['date']}: {', '.join(e['headlines'])}" for e in recent
+        )
+        msg += (
+            f"\n\nThese topics were already covered this week — find different stories "
+            f"and avoid repeating these:\n{covered}"
+        )
+    return msg
 
-    messages = [{"role": "user", "content": user_message}]
+
+def fetch_briefing(today: str, recent: list[dict]) -> dict:
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    messages = [{"role": "user", "content": build_user_message(today, recent)}]
 
     for iteration in range(10):
         for attempt in range(5):
@@ -76,33 +108,34 @@ def fetch_briefing(today: str) -> dict:
                     model="claude-sonnet-4-6",
                     max_tokens=8000,
                     system=SYSTEM_PROMPT,
-                    tools=[{"type": "web_search_20250305", "name": "web_search"}],
+                    tools=[{
+                        "type": "web_search_20250305",
+                        "name": "web_search",
+                        "max_uses": 5,
+                    }],
                     messages=messages,
                 )
                 break
             except anthropic.RateLimitError:
                 if attempt == 4:
                     raise
-                wait = min(30 * (2 ** attempt), 120)  # 30, 60, 120, 120 s
+                wait = min(30 * (2 ** attempt), 120)
                 print(f"Rate limited. Waiting {wait}s...")
                 time.sleep(wait)
 
-        block_types = [block.type for block in response.content]
-        print(f"Iteration {iteration}: stop_reason={response.stop_reason}, blocks={block_types}")
+        print(f"Iteration {iteration}: stop_reason={response.stop_reason}")
 
         if response.stop_reason in ("end_turn", "max_tokens"):
             text_parts = [block.text for block in response.content if block.type == "text"]
-            print(f"Text blocks: {len(text_parts)}, total chars: {sum(len(t) for t in text_parts)}")
             if not text_parts:
                 raise RuntimeError(
                     f"stop_reason={response.stop_reason} but no text blocks. "
-                    f"Block types present: {block_types}"
+                    f"Block types: {[b.type for b in response.content]}"
                 )
             raw = "\n".join(text_parts).strip()
             raw = re.sub(r"^```(?:json)?\s*", "", raw)
             raw = re.sub(r"\s*```\s*$", "", raw)
             raw = raw.strip()
-            # Extract JSON object in case there's preamble or trailing text
             start, end = raw.find("{"), raw.rfind("}")
             if start != -1 and end != -1:
                 raw = raw[start:end + 1]
@@ -193,13 +226,16 @@ def send_email(html: str, today: str) -> None:
 
 def main() -> None:
     today = date.today().strftime("%B %d, %Y")
-    print(f"Fetching briefing for {today}...")
-    data = fetch_briefing(today)
-    print(f"Got {len(data.get('stories', []))} stories. Building email...")
+    recent = load_recent_topics()
+    print(f"Fetching briefing for {today} (avoiding {sum(len(e['headlines']) for e in recent)} recent stories)...")
+    data = fetch_briefing(today, recent)
+    stories = data.get("stories", [])
+    print(f"Got {len(stories)} stories. Building email...")
     html = build_html(data, today)
     print("Sending email...")
     send_email(html, today)
-    print("Done! Briefing sent.")
+    save_story_log(today, stories)
+    print("Done! Briefing sent and story log updated.")
 
 
 if __name__ == "__main__":
