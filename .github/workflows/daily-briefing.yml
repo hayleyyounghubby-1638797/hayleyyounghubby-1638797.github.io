@@ -2,7 +2,7 @@ name: Daily AI Briefing
 
 on:
   schedule:
-    - cron: '0 11 * * 1-5'  # 7am EDT (11am UTC), weekdays only
+    - cron: '30 12 * * 1-5'  # 7:30am EST (12:30pm UTC), weekdays only
   workflow_dispatch:         # allows manual trigger from GitHub UI
 
 jobs:
