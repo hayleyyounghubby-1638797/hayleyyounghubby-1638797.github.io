@@ -2,7 +2,7 @@ name: Daily AI Briefing
 
 on:
   schedule:
-    - cron: '30 12 * * 1-5'  # 7:30am EST (12:30pm UTC), weekdays only
+    - cron: '30 9 * * 1-5'  # targets ~7:30am EDT; scheduled 9:30am UTC, ~2hr GitHub lag lands ~11:30am UTC = 7:30am EDT
   workflow_dispatch:         # allows manual trigger from GitHub UI
 
 jobs:
