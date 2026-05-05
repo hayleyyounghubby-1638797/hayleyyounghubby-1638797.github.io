@@ -1,16 +1,5 @@
 [
   {
-    "date": "April 26, 2026",
-    "headlines": [
-      "GPT-5.5 Rolls In Like It Owns the Place \u2014 Agentic, Less Needy, Somehow More Demanding",
-      "DeepSeek V4 Arrives With a 1M Token Window and a Price Tag That Makes US Labs Uncomfortable",
-      "Anthropic's 'Project Deal': Claude Closed 186 Real Transactions and the Weaker-Model Users Had No Idea They Lost",
-      "SoundHound Buys LivePerson: The Omnichannel Conversational AI Stack Nobody Saw Coming",
-      "Plaid's New Data: 55% of Americans Now Use AI for Money \u2014 and Half Think Doing It Manually Will Soon Feel Embarrassing",
-      "Meta's AI Ad Assistant Goes Global After Cutting Cost-Per-Result by 12% in Beta \u2014 The Physical World Is Now a Targeting Signal"
-    ]
-  },
-  {
     "date": "April 27, 2026",
     "headlines": [
       "OpenAI Dumps Microsoft's Exclusivity, Slides Into Every Cloud Like It's Cuffing Season",
@@ -73,6 +62,18 @@
       "OpenAI Releases GPT-5.5-Cyber to Vetted Defenders Only \u2014 Financial Institutions Are on the Guest List",
       "Generative UI Is No Longer a 2027 Prediction \u2014 Banking Apps Are Already Building Intent-Driven Interfaces",
       "OpenAI Publishes Postmortem on Why GPT-5.1 Wouldn't Stop Saying 'Goblin' \u2014 The Answer Is Weirder Than You Think"
+    ]
+  },
+  {
+    "date": "May 05, 2026",
+    "headlines": [
+      "OpenAI and Anthropic Launch PE Deployment Vehicles Within Minutes of Each Other \u2014 Coincidence Is Not a Thing Anymore",
+      "Anthropic Takes McKinsey's Lunch \u2014 The New JV Is Palantir's Playbook With a Better Model",
+      "Avoca Raises $125M to Put Real-Time AI Inside Call Centers \u2014 And It Transcribes, Summarizes, and Acts While You're Still Talking",
+      "FinovateSpring Opens Today in San Diego \u2014 The Fintech Industry's Biggest Live AI Demo Floor Is Officially Open for Business",
+      "Agentic AI Guidance Drops From the Five Eyes Alliance \u2014 Governments Are Officially Nervous About What Agents Do Unsupervised",
+      "Regulated Industries Are Choosing Hallucination Resistance Over Raw Capability \u2014 The Bank of New York Just Made It Official",
+      "IDC Says AI Agents Are Already Mediating Travel and Dining Decisions \u2014 And Hotels That Don't Have Machine-Readable Data Are Invisible"
     ]
   }
 ]
