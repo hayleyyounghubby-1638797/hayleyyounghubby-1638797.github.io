@@ -1,16 +1,5 @@
 [
   {
-    "date": "April 27, 2026",
-    "headlines": [
-      "OpenAI Dumps Microsoft's Exclusivity, Slides Into Every Cloud Like It's Cuffing Season",
-      "Cohere Acquires Aleph Alpha and Declares Itself the Non-American Option \u2014 Europeans, Please Clap",
-      "Grok Voice Is Now Driving Teslas and Outperforming GPT Realtime \u2014 Voice AI Just Got a Whole New Fleet",
-      "DeepSeek Fires Up a Price War With V4, Slashing Fees While Chinese AI Chips Do the Heavy Lifting",
-      "Amex Just Bought a Sam Altman-Backed AI Expense Startup \u2014 Your Company Is Now the Product It's Testing",
-      "AI Junior Bankers Flunk Their First Day: New Benchmark Shows No GPT or Claude Output Was 'Client-Ready'"
-    ]
-  },
-  {
     "date": "April 28, 2026",
     "headlines": [
       "Kimi K2.6 Runs Autonomously for 12 Hours, Beats GPT-5.4 on Agentic Benchmarks, and Ships Open-Weight \u2014 Because Moonshot Doesn't Do Things Quietly",
@@ -74,6 +63,17 @@
       "Agentic AI Guidance Drops From the Five Eyes Alliance \u2014 Governments Are Officially Nervous About What Agents Do Unsupervised",
       "Regulated Industries Are Choosing Hallucination Resistance Over Raw Capability \u2014 The Bank of New York Just Made It Official",
       "IDC Says AI Agents Are Already Mediating Travel and Dining Decisions \u2014 And Hotels That Don't Have Machine-Readable Data Are Invisible"
+    ]
+  },
+  {
+    "date": "May 06, 2026",
+    "headlines": [
+      "Anthropic Walks Into Wall Street With 10 Pre-Built Finance Agents and a $1.5B PE Checkbook \u2014 FactSet and Moody's Stocks Immediately Weep",
+      "OpenAI and PwC Announce Finance Agent Partnership on the Same Day Anthropic Announced Theirs \u2014 This Was Not a Coincidence, This Was a Turf War",
+      "Coinbase Cuts 700 Jobs and PayPal Plans to Cut 20% of Staff \u2014 Fintech's 'AI Efficiency' Era Is Now a Template, Not a Trend",
+      "Anthropic's 'Project Deal' Published: AI Agents Already Negotiate Better Deals Than Humans \u2014 And the Better Your Model, the More Money You Make",
+      "DeepMind London Workers Vote to Unionize Over Military AI Contracts \u2014 The 'Who Does Your Model Work For' Question Is Now an HR Issue",
+      "Enter, a Brazilian Legal AI Startup That Handles Litigation for Airbnb, Raises $100M at $1.2B Valuation \u2014 Founders Fund Leads, Vertical AI Is Still Very Much Printing Money"
     ]
   }
 ]
