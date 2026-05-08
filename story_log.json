@@ -1,16 +1,5 @@
 [
   {
-    "date": "April 29, 2026",
-    "headlines": [
-      "NVIDIA's Nemotron 3 Nano Omni Wants to Be Your Agent's Eyes, Ears, AND Brain \u2014 All at Once",
-      "ICLR 2026 Drops the Most Inconvenient Research of the Year: Smarter AI Agents Hallucinate MORE Tools, Not Fewer",
-      "China Blocks Meta's $2B Manus Acquisition and Orders a Full Unwind \u2014 The Agentic AI Arms Race Just Got Geopolitical",
-      "Gemini's Crypto Exchange Launches 'Agentic Trading' \u2014 AI Can Now Autonomously Touch Your Money via MCP",
-      "Performativ Closes \u20ac12M to Build an AI-Native OS for Wealth Managers \u2014 Deutsche B\u00f6rse Is Betting on the Embedded AI Model",
-      "McKinsey Reports Fintech Is Now a $650B Revenue Industry \u2014 And AI Is the Only Reason the Gap With Incumbents Is Still Closeable"
-    ]
-  },
-  {
     "date": "April 30, 2026",
     "headlines": [
       "Big Tech's Q1 AI Earnings Are In, and the Check Is Larger Than Your Country's GDP",
@@ -76,6 +65,17 @@
       "FinovateSpring Closes Today \u2014 And the Final Day's Credit Union Stage Is the Most Underrated Signal in Fintech",
       "OpenAI Is Quietly Preparing to Go Public \u2014 and $25B in Annualized Revenue Is the Cover Story",
       "Sage Buys Doyen AI to Fast-Track SMB ERP Data Migrations \u2014 Vertical AI Keeps Printing Acquisition Multiples"
+    ]
+  },
+  {
+    "date": "May 08, 2026",
+    "headlines": [
+      "Wyndham Just Shipped a Native ChatGPT App \u2014 Hotel Booking Is Now a Conversation, Not a Form",
+      "Marc Lore Says AI Will Let Anyone Open a Restaurant in Under a Minute \u2014 Wonder Create Is the Receipts",
+      "JPMorgan Reclassifies Its AI Spend From 'Experiment' to 'Core Infrastructure' \u2014 $19.8B and 2,000 Staff Is Not a Pilot",
+      "Microsoft's Global AI Diffusion Report: 17.8% of the World's Working-Age Population Uses AI \u2014 The UAE Is at 70%, the U.S. Is Ranked 21st",
+      "State Legislatures Are Having a Moment: Connecticut's Comprehensive AI Bill, Iowa's Chatbot Safety Law, and Colorado's Dynamic Pricing Rules Are All Moving at Once",
+      "Marriott's Q1 2026 Earnings Reveal the Loyalty App Playbook: 210M Bonvoy Members, Record Digital Bookings, and 'Next Best Action' AI Already in Production"
     ]
   }
 ]
