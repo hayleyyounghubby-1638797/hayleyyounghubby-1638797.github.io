@@ -1,16 +1,5 @@
 [
   {
-    "date": "April 30, 2026",
-    "headlines": [
-      "Big Tech's Q1 AI Earnings Are In, and the Check Is Larger Than Your Country's GDP",
-      "Rogo Raises $160M to Be the Vertical AI That Goldman Actually Trusts \u2014 Finance Gets Its Own Felix",
-      "Mistral Launches 'Workflows' and Finally Has a Three-Act Play \u2014 Not Just a Model",
-      "AWS Drops Three OpenAI Products on Bedrock Overnight \u2014 The Post-Exclusivity Era Moves Fast",
-      "Google Signs Pentagon AI Deal \u2014 Classified Work, Safety Filters Included, Anthropic Not Invited (Yet)",
-      "ChatGPT Quietly Moves the Model Switcher Into the Input Bar \u2014 Small Change, Big UX Signal"
-    ]
-  },
-  {
     "date": "May 01, 2026",
     "headlines": [
       "Spotify Introduces 'Verified by Spotify' Badge \u2014 Because Apparently We Now Need to Prove Artists Are Human",
@@ -76,6 +65,18 @@
       "Microsoft's Global AI Diffusion Report: 17.8% of the World's Working-Age Population Uses AI \u2014 The UAE Is at 70%, the U.S. Is Ranked 21st",
       "State Legislatures Are Having a Moment: Connecticut's Comprehensive AI Bill, Iowa's Chatbot Safety Law, and Colorado's Dynamic Pricing Rules Are All Moving at Once",
       "Marriott's Q1 2026 Earnings Reveal the Loyalty App Playbook: 210M Bonvoy Members, Record Digital Bookings, and 'Next Best Action' AI Already in Production"
+    ]
+  },
+  {
+    "date": "May 11, 2026",
+    "headlines": [
+      "Cerebras IPO Roadshow Goes Full 'Bachelorette' \u2014 20x Oversubscribed, Price Jumps to $160",
+      "Palantir Drops 85% Revenue Growth and Wall Street Still Frowns \u2014 Welcome to the Expectations Economy",
+      "Temenos Drops a Whole Suite of Banking AI at TCF 2026 \u2014 'Conversational Studio' Is the UX Story Worth Stealing",
+      "Allvue and RSM Just Built the 'World's First' Agentic Capital Call Model \u2014 Private Credit's Back Office Has a New Robot",
+      "Citi Is Quietly Shipping an AI Wealth Feature Called 'Sky' This Summer \u2014 and Nobody Made It the Top Story",
+      "AI Traffic to Retail Sites Up 393% YoY \u2014 and It Converts 42% Better Than Paid Search",
+      "New York's AI Training Data Transparency Act Passes the Assembly \u2014 The 'What Was Your Model Fed?' Question Just Got Legal Teeth"
     ]
   }
 ]
