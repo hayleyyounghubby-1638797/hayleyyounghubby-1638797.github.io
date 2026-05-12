@@ -1,16 +1,5 @@
 [
   {
-    "date": "May 01, 2026",
-    "headlines": [
-      "Spotify Introduces 'Verified by Spotify' Badge \u2014 Because Apparently We Now Need to Prove Artists Are Human",
-      "Meta's Muse Spark Earnings Moment: Wall Street Wants a Chatbot Strategy, Not Just Better Ad Targeting",
-      "Huawei's AI Chip Revenue Is About to Hit $12B \u2014 The Nvidia Workaround Is No Longer a Workaround",
-      "The Musk vs. Altman Trial Just Got a Covert Liaison Subplot \u2014 Shivon Zilis Named as the Bridge Between Two Empires",
-      "Spotify's Q1 Earnings: The Co-CEO Compared AI to the iPhone Moment \u2014 and Proposed AI Music 'Derivatives' as the New Revenue Line",
-      "A California Court Just Ruled AI-Assembled Ad Content Can Make Platforms Legally Liable for Fraud \u2014 Big Tech's Legal Exposure Just Got Real"
-    ]
-  },
-  {
     "date": "May 04, 2026",
     "headlines": [
       "Stripe Drops 288 Launches at Sessions 2026 and Quietly Declares Itself the Rails of the Agent Economy",
@@ -77,6 +66,17 @@
       "Citi Is Quietly Shipping an AI Wealth Feature Called 'Sky' This Summer \u2014 and Nobody Made It the Top Story",
       "AI Traffic to Retail Sites Up 393% YoY \u2014 and It Converts 42% Better Than Paid Search",
       "New York's AI Training Data Transparency Act Passes the Assembly \u2014 The 'What Was Your Model Fed?' Question Just Got Legal Teeth"
+    ]
+  },
+  {
+    "date": "May 12, 2026",
+    "headlines": [
+      "Broadridge Puts Agentic AI in Full Production and Calls Its Competitors 'Fragmented' to Their Faces",
+      "Mastercard Is Acquiring BVNK \u2014 and the On-Chain/Fiat Merge Just Got a Payments Giant's Blessing",
+      "Google Caught Hackers Using AI to Find a Zero-Day That Could Bypass Two-Factor Auth \u2014 And Thwarted It Before the 'Mass Exploitation Event'",
+      "IBM Says 76% of Companies Now Have a Chief AI Officer \u2014 Up from 26% Last Year, Which Is Honestly Alarming Math",
+      "Jakob Nielsen Says Generative UI Is the Design Pattern of 2026 \u2014 And He Used a Banking App Dispute Flow as the Exact Example",
+      "U.S. Bank Is Moving 'Hundreds of Mission-Critical Systems' Into a Cloud-and-AI Operating Model With AWS \u2014 Quietly, With No Press Conference"
     ]
   }
 ]
